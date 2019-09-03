@@ -22,7 +22,7 @@
                     break;
                     case 'clone':
 
-                $query = "SELECT * FROM posts WHERE post_id = '{$postValueId}' ";
+                $query = "SELECT * FROM posts WHERE post_id = $checkBoxValue ";
                 $select_post_query = mysqli_query($connection, $query);
 
                 while($row = mysqli_fetch_array($select_post_query)) {
