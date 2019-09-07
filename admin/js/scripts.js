@@ -39,7 +39,7 @@ function loadUsersOnline() {
 
 setInterval(function() {
     loadUsersOnline();
-}, 500);
+},500);
 
 
 

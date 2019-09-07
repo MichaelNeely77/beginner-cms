@@ -15,7 +15,7 @@
             <!-- <a href="">Users online: 
             <?php //echo users_online(); ?>
             </a> -->
-            <a href="">Users online: <?php echo users_online(); ?></a>
+            <a href="">Users online: <span class="usersonline"></span></a>
             
             
             </li>s
