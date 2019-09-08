@@ -19,24 +19,20 @@ if(isset($_GET['edit_user'])) {
 
     }
 
-}
+
 
 if(isset($_POST['edit_user'])) {
 
     $user_firstname = $_POST['user_firstname'];
     $user_lastname = $_POST['user_lastname'];
     $user_role = $_POST['user_role'];
-
-    // $post_image = $_FILES['post_image']['name'];
-    // $post_image_temp = $_FILES['post_image']['tmp_name'];
-
     $username = $_POST['username'];
     $user_email = $_POST['user_email'];
     $user_password = $_POST['user_password'];
-    // $post_date = date('M-d-Y');
+    $post_date = date('M-d-Y');
 
 
-    }
+
 
     if(!empty($user_password)) {
 
@@ -48,24 +44,36 @@ if(isset($_POST['edit_user'])) {
         $row = mysqli_fetch_array($get_user_query);
 
         $db_user_password = $row['user_password'];
+
+        if ($db_user_password != $user_password) {
+            $hashed_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 12));
+        }
+        $query = "UPDATE users SET ";
+        $query .= "user_firstname = '{$user_firstname}', ";
+        $query .= "user_lastname = '{$user_lastname}', ";
+        $query .= "user_role = '{$user_role}', ";
+        $query .= "username = '{$username}', ";
+        $query .= "user_email = '{$user_email}', ";
+        $query .= "user_password = '{$hashed_password}' ";
+        $query .= "WHERE user_id = '{$the_user_id}' ";
+    
+        $edit_user_query = mysqli_query($connection, $query);
+    
+        confirm_query($edit_user_query);
+
+        echo "User Updated" . " <a href='users.php'>View Users?</a>";
+
     }
+
 
 
     // move_uploaded_file($post_image_temp, "../images/$post_image" );
 
-    $query = "UPDATE users SET ";
-    $query .= "user_firstname = '{$user_firstname}', ";
-    $query .= "user_lastname = '{$user_lastname}', ";
-    $query .= "user_role = '{$user_role}', ";
-    $query .= "username = '{$username}', ";
-    $query .= "user_email = '{$user_email}', ";
-    $query .= "user_password = '{$hashed_password}' ";
-    $query .= "WHERE user_id = '{$the_user_id}' ";
+    } else {
+        header("Location: index.php");
+    }
 
-    $edit_user_query = mysqli_query($connection, $query);
-
-    confirm_query($edit_user_query);
-
+}
 
 ?>
 
@@ -116,7 +124,7 @@ if(isset($_POST['edit_user'])) {
     </div>
     <div class="form-group">
         <label for="user_password">Password</label>  
-        <input type="password" class="form-control" name="user_password" value="<?php echo $user_password; ?>">
+        <input autocomplete="off" type="password" class="form-control" name="user_password" >
     </div>
     <div class="form-group">
         <input type="submit" value="Edit User" class="btn btn-primary" name="edit_user">
