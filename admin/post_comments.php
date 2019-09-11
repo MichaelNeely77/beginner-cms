@@ -1,4 +1,23 @@
 <?php include 'includes/admin_header.php'; ?>
+   
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <?php include "includes/admin_navigation.php" ?>
+
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Welcome to Comments
+                            <small>Author</small>
+                        </h1>
+
 
 
 <table class="table table-bordered table-hover">
@@ -62,7 +81,7 @@
             echo "<td>$comment_date</td>";
             echo "<td><a href='comments.php?approve=$comment_id'>Approve</a></td>";
             echo "<td><a href='comments.php?unapprove=$comment_id'>Unapprove</a></td>";
-            echo "<td><a href='comments.php?delete=$comment_id'>Delete</a></td>";
+            echo "<td><a href='post_comments.php?delete=$comment_id&id=". $_GET['id'] . "'>Delete</a></td>";
             echo "</tr>";
         
         }
@@ -79,7 +98,7 @@
 
         $query = "UPDATE comments SET comment_status = 'approved' WHERE comment_id = $the_comment_id";
         $approve_comment_query = mysqli_query($connection, $query);
-        header("Location: comments.php");
+        header("Location: post_comments.php");
 
 
     }
@@ -89,7 +108,7 @@
 
         $query = "UPDATE comments SET comment_status = 'unapproved' WHERE    COMMENT_ID = $the_comment_id";
         $unapprove_comment_query = mysqli_query($connection, $query);
-        header("Location: comments.php");
+        header("Location: post_comments.php");
 
 
     }
@@ -101,7 +120,7 @@
 
         $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id} ";
         $delete_query = mysqli_query($connection, $query);
-        header("Location: comments.php");
+        header("Location: post_comments.php?id=" . $_GET['id'] . "");
 
 
     }
