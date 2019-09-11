@@ -130,7 +130,7 @@
             echo "<td><img src='../images/$post_image' alt='image' width='200'></td>";
             echo "<td>$post_tags</td>";
 
-            $query = "SELECT * FROM comments WHERE comment_post_id = $post_id";
+            $query = "SELECT * FROM comments WHERE comment_post_id = $the_post_id";
             $send_comment_query = mysqli_query($connection, $query);
             $count_comments = mysqli_num_rows($send_comment_query);
 
