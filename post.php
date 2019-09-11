@@ -87,7 +87,7 @@
                         $comment_email = $_POST['comment_email'];
                         $comment_content = $_POST['comment_content'];
 
-                        if(!empty($comment_author) &&  $comment_email && $$comment_content) {
+                        if(!empty($comment_author) &&  $comment_email && $comment_content) {
                             $query = "INSERT INTO comments (comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date)";
                             $query .= "VALUES ($the_post_id, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'unapproved', now())";
     
@@ -96,9 +96,11 @@
                                     die('QUERY FAILED' . mysqli_error($connection));
                                 }
     
-                                $query = "UPDATE posts SET post_comment_count = post_comment_count + 1 ";
-                                $query .= "WHERE post_id = $the_post_id ";
-                                $update_comment_count = mysqli_query($connection, $query);
+                                // $query = "UPDATE posts SET post_comment_count = post_comment_count + 1 ";
+                                // $query .= "WHERE post_id = $the_post_id ";
+                                // $update_comment_count = mysqli_query($connection, $query);
+
+
     
                                 
                         } else {
