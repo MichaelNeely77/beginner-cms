@@ -75,7 +75,7 @@
 
             <th><input type="checkbox" name="" id="selectAllBoxes"></th>
             <th>Id</th>
-            <th>Author</th>
+            <th>User</th>
             <th>Title</th>
             <th>Category</th>
             <th>Status</th>
@@ -115,9 +115,9 @@
             <?php
             echo "<td>$post_id</td>";
 
-            if(isset($post_author) || !empty($post_author)) {
+            if(!empty($post_author)) {
                 echo "<td>$post_author</td>";
-            } elseif(isset($post_user) || !empty($post_user)) {
+            } elseif(!empty($post_user)) {
                 echo "<td>$post_user</td>";
             }
            
