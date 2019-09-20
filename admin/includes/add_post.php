@@ -63,18 +63,18 @@ if(isset($_POST['create_post'])) {
     </div> -->
     <div class="form-group">
         <label for="users">Users</label>
-        <select name="post_author" id="">
+        <select name="post_category" id="">
             <?php 
-                $query = "SELECT * FROM users";
-                $select_users = mysqli_query($connection, $query);
+                $users_query = "SELECT * FROM users";
+                $select_users = mysqli_query($connection, $users_query);
 
                 confirm_query($select_users);
 
                 while($row = mysqli_fetch_assoc($select_users)) {
-                    $user_id = $row['cat_id'];
-                    $cusername = $row['cat_title'];
+                    $user_id = $row['user_id'];
+                    $username = $row['username'];
 
-                    echo "<option value='{$user_id}'>{$username}</option>";
+                    echo "<option value='$user_id'>{$username}</option>";
                 }
             ?>
         
