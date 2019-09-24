@@ -16,7 +16,7 @@
             $to = "michael@michaelneely.net";
             $subject = wordwrap($_POST['subject']);
             $message = $_POST['message'];
-            $header = $_POST['email'];
+            $header = "From: " .  $_POST['email'];
 
             mail($to,$subject,$message);
 
