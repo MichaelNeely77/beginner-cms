@@ -7,14 +7,23 @@
     <?php  include "includes/navigation.php"; ?>
 
     <?php 
+
+
+
         if(isset($_POST['submit'])) {
 
+
             $to = "michael@michaelneely.net";
-            $subject = $_POST['subject'];
+            $subject = wordwrap($_POST['subject']);
             $message = $_POST['message'];
+            $header = $_POST['email'];
+
+            mail($to,$subject,$message);
 
             
         }
+
+        
     
     ?>
     
