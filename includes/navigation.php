@@ -40,6 +40,9 @@
                     <li>
                         <a href="registration.php">Register Here</a>
                     </li>
+                    <li>
+                        <a href="contact.php">Contact Us</a>
+                    </li>
                         <?php
                         if(isset($_SESSION['user_role'])) {
                             if(isset($_GET['p_id'])) {

@@ -9,43 +9,11 @@
     <?php 
         if(isset($_POST['submit'])) {
 
-            $username = $_POST['username'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
+            $to = "michael@michaelneely.net";
+            $subject = $_POST['subject'];
+            $message = $_POST['message'];
 
-            if(!empty($username) && !empty($email) && !empty($password)) {
-
-                $username = mysqli_real_escape_string($connection, $username);
-                $email = mysqli_real_escape_string($connection, $email);
-                $password = mysqli_real_escape_string($connection, $password);
-
-                $password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
-        
-                // $query = "SELECT randSalt FROM users";
-                // $select_randsalt_query = mysqli_query($connection, $query);
-        
-                // if(!$select_randsalt_query) {
-                //     die("Query failed" . mysqli_error($connection));
-                // }
-        
-                // $row = mysqli_fetch_array($select_randsalt_query);
-        
-                // $salt = $row['randSalt'];
-                // $password =crypt($password, $salt);
-        
-                $query = "INSERT INTO users (username, user_email, user_password, user_role) ";
-                $query .= "VALUES('{$username}', '{$email}', '{$password}', 'subscriber' )";
-                $register_user_query = mysqli_query($connection, $query);
-                if(!$register_user_query) {
-                    die("QUERY FAILED" . mysqli_error($connection) . ' ' . mysqli_errno($connection));
-                }
-                
-                $message = "Your registration has been submitted";
-            } else {
-                $message = "Fields cannot be empty";
-            }
-        } else {
-            $message = "";
+            
         }
     
     ?>
@@ -60,7 +28,7 @@
             <div class="col-xs-6 col-xs-offset-3">
                 <div class="form-wrap">
                 <h1>Contact</h1>
-                    <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
+                    <form role="form" action="" method="post" id="login-form" autocomplete="off">
                     <h6 class="text-center"><?php echo $message ?></h6>
                         
                          <div class="form-group">
