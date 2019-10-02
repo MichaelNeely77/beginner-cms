@@ -38,7 +38,7 @@
                 <div class="form-wrap">
                 <h1>Contact</h1>
                     <form role="form" action="" method="post" id="login-form" autocomplete="off">
-                    <h6 class="text-center"><?php echo $message ?></h6>
+                    <h6 class="text-center"><?php echo $message; ?></h6>
                         
                          <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
