@@ -108,3 +108,14 @@ function delete_categories() {
     }
 
 }
+
+function record_count($table) {
+    global $connection;
+    $query = "SELECT * FROM " . $table;
+    $select_all_posts = mysqli_query($connection, $query);
+
+    $result = mysqli_num_rows($select_all_posts); 
+    confirm_query($result);
+
+    return $result;
+}
