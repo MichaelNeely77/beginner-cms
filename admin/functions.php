@@ -119,3 +119,25 @@ function record_count($table) {
 
     return $result;
 }
+
+function check_status($table, $column, $status) {
+
+    global $connection;
+
+    $query = "SELECT * FROM $table WHERE $column = '$status' ";
+    $result = mysqli_query($connection, $query);
+
+    return mysqli_num_rows($result);
+
+}
+
+function check_user_role($table, $column, $role) {
+
+    global $connection;
+
+    $query = "SELECT * FROM $table WHERE $column = '$role' ";
+    $result = mysqli_query($connection, $query);
+
+    return mysqli_num_rows($result);
+
+}
