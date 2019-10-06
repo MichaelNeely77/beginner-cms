@@ -100,8 +100,10 @@ include("delete_modal.php");
     <tbody>
         <?php 
         
-        $query = "SELECT * FROM posts ORDER BY post_id DESC";
-        $select_posts = mysqli_query($connection, $query);
+        // $query = "SELECT * FROM posts ORDER BY post_id DESC";
+        $query = "SELECT posts.post_id, posts.post_author, post.post_author, posts.user, posts.pst_title, post.category_id, posts.post_status, posts.post_image, ";
+        $query .= "posts.post_tags, posts.post_comment_count, posts.post_date, posts.post_views_count, categories.categories.cat_is, categories.cat_title"
+;        $select_posts = mysqli_query($connection, $query);
     
         while($row = mysqli_fetch_assoc($select_posts)) {
             $post_id = $row['post_id'];
