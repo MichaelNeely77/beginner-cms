@@ -20,7 +20,7 @@
                 'password' => ''
             ];
 
-            if(strlen($username) > 4) {
+            if(strlen($username) < 4) {
                 $error['username'] = 'Username needs to be at least 4 characters';
             }
 
@@ -33,7 +33,7 @@
             }
 
             if($email == '') {
-                $error['email'] = 'Username cannot be empty';
+                $error['email'] = 'Email cannot be empty';
             }
 
             if(email_exists($email)) {
@@ -76,10 +76,12 @@
                          <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
                             <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com" autocomplete="on" value="<?php echo isset($email) ? $email : '' ?>">
+                            <p><?php echo isset($error['email']) ? $error['email'] : '' ?></p>
                         </div>
                          <div class="form-group">
                             <label for="password" class="sr-only">Password</label>
                             <input type="password" name="password" id="key" class="form-control" placeholder="Password">
+                            <p><?php echo isset($error['password']) ? $error['password'] : '' ?></p>
                         </div>
                 
                         <input type="submit" name="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Register">
