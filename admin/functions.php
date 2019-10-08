@@ -176,7 +176,7 @@ function username_exists($username) {
     }
 }
 
-function email_exists($username) {
+function email_exists($email) {
     global $connection;
 
     $query = "SELECT user_email FROM users WHERE user_email = '$email'";
