@@ -200,11 +200,7 @@ function register_user($username, $email, $password) {
 
 
 
-    if(username_exists($username)){
 
-    }
-
-    if(!empty($username) && !empty($email) && !empty($password)) {
 
         $username = mysqli_real_escape_string($connection, $username);
         $email = mysqli_real_escape_string($connection, $email);
@@ -219,11 +215,10 @@ function register_user($username, $email, $password) {
         confirm_query($register_user_query);
 
         
-        }
         
 }
 
-function login_user($username, $email) {
+function login_user($username, $password) {
 
     global $connection;
 
@@ -248,9 +243,6 @@ $select_user_query =  mysqli_query($connection, $query);
         $db_user_role = $row['user_role'];
     }
 
-    // $password = crypt($password, $db_user_password);
-
-
     if (password_verify($password, $db_user_password)) {
 
         $_SESSION['username'] = $db_username;
@@ -259,9 +251,9 @@ $select_user_query =  mysqli_query($connection, $query);
         $_SESSION['user_role'] = $db_user_role;
 
 
-        header("Location: ../admin" );
+        redirect("/beginners-cms/admin");
     } else {
-        header("Location: ../index.php");
+        redirect("/beginners-cms/index.php");
     }
 
 }
