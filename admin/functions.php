@@ -79,6 +79,8 @@ function insert_categories() {
                 die('QUERY FAILED' . mysqli_error($connection));
             }
         }
+
+        mysqli_stmt_close($stmt);
     }
 
 }
