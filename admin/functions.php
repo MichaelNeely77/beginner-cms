@@ -214,6 +214,15 @@ function ifItIsMethod($method=null) {
     return false;
 }
 
+function isLoggedIn() {
+    if(isset($_SESSION['user_role'])) {
+
+        return true;
+    }
+
+    return false;
+}
+
 function register_user($username, $email, $password) {
     global $connection;
 
