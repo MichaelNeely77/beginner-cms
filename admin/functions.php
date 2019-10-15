@@ -223,6 +223,14 @@ function isLoggedIn() {
     return false;
 }
 
+function checkIfUserIsLoggedInAndRedirect($session) {
+
+    isLoggedIn(); {
+
+    }
+    redirect();
+}
+
 function register_user($username, $email, $password) {
     global $connection;
 

@@ -2,6 +2,8 @@
 <?php include 'includes/db.php'; ?>
 
 
+
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
 
@@ -48,10 +50,23 @@
                         }
                     
                     ?>
-
+                    <?php  if(isLoggedIn()): ?>
                     <li>
                         <a href="admin">Admin</a>
                     </li>
+                        
+
+                    <?php else: ?>
+                    <li>
+                        <a href="login.php">Login</a>
+                    </li>
+                    <li>
+                        <a href="includes/logout.php">Logout</a>
+                    </li>
+
+                    <?php endif;?>
+
+
                     <li class='<?php echo $registration_class; ?>'>
                         <a href="registration.php">Register Here</a>
                     </li>
