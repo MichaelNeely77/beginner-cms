@@ -200,6 +200,18 @@ function email_exists($email) {
 
 function redirect($location) {
     return header("Location:" . $location);
+    exit;
+}
+
+function ifItIsMethod($method=null) {
+
+    if($_SERVER['REQUEST_METHOD'] == strtoupper($method))  {
+
+        return true;
+
+    }
+
+    return false;
 }
 
 function register_user($username, $email, $password) {

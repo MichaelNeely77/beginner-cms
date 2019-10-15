@@ -41,7 +41,7 @@
 
 
             
-            $query = "SELECT * FROM posts LIMIT $page_1, 5";
+            $query = "SELECT * FROM posts"; // LIMIT $page_1, 5
             $select_all_posts_query = mysqli_query($connection, $query);
 
             while($row = mysqli_fetch_assoc($select_all_posts_query)) {
