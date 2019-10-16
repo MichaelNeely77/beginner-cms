@@ -1,19 +1,26 @@
+<?php  include "includes/db.php"; ?>
+<?php  include "includes/header.php"; ?>
 
- <?php  include "includes/header.php"; ?>
- <?php include "admin/functions.php" ?>
+
+<?php
+
+		checkIfUserIsLoggedInAndRedirect('/cms/admin');
 
 
- <?php 
+		if(ifItIsMethod('post')){
 
-checkIfUserIsLoggedInAndRedirect('beginners-cms/admin');
+			if(isset($_POST['username']) && isset($_POST['password'])){
 
-if(ifItIsMethod('post')) {
-	if(isset($_POST['username']) && isset($_POST['password'])) {
-		login_user($_POST['username'], $_POST['password']);
-	} else {
-		redirect('login.php');
-	}
-}
+				login_user($_POST['username'], $_POST['password']);
+
+
+			}else {
+
+
+				redirect('/cms/login.php');
+			}
+
+		}
 
 ?>
 

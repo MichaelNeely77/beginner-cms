@@ -223,12 +223,22 @@ function isLoggedIn() {
     return false;
 }
 
-function checkIfUserIsLoggedInAndRedirect($session) {
+// function checkIfUserIsLoggedInAndRedirect($session) {
 
-    isLoggedIn(); {
+//     isLoggedIn(); {
+
+//     }
+//     redirect($location);
+// }
+
+function checkIfUserIsLoggedInAndRedirect($redirectLocation=null){
+
+    if(isLoggedIn()){
+
+        redirect($redirectLocation);
 
     }
-    redirect();
+
 }
 
 function register_user($username, $email, $password) {
@@ -277,19 +287,21 @@ $select_user_query =  mysqli_query($connection, $query);
         $db_user_firstname = $row['user_firstname'];
         $db_user_lastname = $row['user_lastname'];
         $db_user_role = $row['user_role'];
+
+        if (password_verify($password, $db_user_password)) {
+
+            $_SESSION['username'] = $db_username;
+            $_SESSION['firstname'] = $db_firstname;
+            $_SESSION['lastname'] = $db_lastname;
+            $_SESSION['user_role'] = $db_user_role;
+    
+    
+            redirect("/beginners-cms/admin");
+        } else {
+            return false;
+        }
     }
 
-    if (password_verify($password, $db_user_password)) {
 
-        $_SESSION['username'] = $db_username;
-        $_SESSION['firstname'] = $db_firstname;
-        $_SESSION['lastname'] = $db_lastname;
-        $_SESSION['user_role'] = $db_user_role;
-
-
-        redirect("/beginners-cms/admin");
-    } else {
-        redirect("/beginners-cms/index.php");
-    }
 
 }
