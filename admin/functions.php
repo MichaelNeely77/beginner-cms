@@ -199,7 +199,7 @@ function email_exists($email) {
 }
 
 function redirect($location) {
-    return header("Location:" . $location);
+    header("Location:" . $location);
     exit;
 }
 
@@ -223,13 +223,6 @@ function isLoggedIn() {
     return false;
 }
 
-// function checkIfUserIsLoggedInAndRedirect($session) {
-
-//     isLoggedIn(); {
-
-//     }
-//     redirect($location);
-// }
 
 function checkIfUserIsLoggedInAndRedirect($redirectLocation=null){
 

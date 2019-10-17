@@ -1,10 +1,12 @@
 <?php  include "includes/db.php"; ?>
 <?php  include "includes/header.php"; ?>
+<?php  include "admin/functions.php"; ?>
+
 
 
 <?php
 
-		checkIfUserIsLoggedInAndRedirect('/cms/admin');
+		checkIfUserIsLoggedInAndRedirect('/beginners-cms/admin');
 
 
 		if(ifItIsMethod('post')){
@@ -17,7 +19,7 @@
 			}else {
 
 
-				redirect('/cms/login.php');
+				redirect('/beginners-cms/login.php');
 			}
 
 		}
