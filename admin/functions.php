@@ -295,6 +295,6 @@ $select_user_query =  mysqli_query($connection, $query);
         }
     }
 
-
+    return true;
 
 }
