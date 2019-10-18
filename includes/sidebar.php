@@ -39,6 +39,7 @@ if(ifItIsMethod() ) {
     <span class="input-group-btn">
         <button class="btn btn-primary" name="login" type="submit">Submit</button>
     </span>
+    <a href="forgot_password.php?forgot=<?php uniqid(true) ?>">Forgot Password?</a>
 </div>
 </form>
 <!-- /.input-group -->
