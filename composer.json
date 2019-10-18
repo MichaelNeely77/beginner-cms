@@ -1,0 +1,12 @@
+{
+    "name": "michael/beginners-cms",
+    "authors": [
+        {
+            "name": "Michael Neely",
+            "email": "michael@michaelneely.net"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.1"
+    }
+}
